@@ -20,12 +20,14 @@
                 
                 <div class="card-body">
                 <div class="form-group">
-                    <label for="date">Valitse aloitus aika</label>
-                    <input type="datetime-local" class="form-control" id="dateinput" name="date">
-                    <br>
+                    <form name="count-down">
                     </fieldset>
+                        <label for="date-and-time">Valitse aloitus aika</label>
+                        <input type="datetime-local" class="form-control" id="date-and-time" name="date-and-time">
+                        <br>
                         <button type="submit" class="btn btn-primary">Tallenna</button>
                     </fieldset>
+                    </form>
                 </div>
                 </div>
             </div>
@@ -48,6 +50,7 @@
 
     </div>
 
+<script src="js/changeCountDown.js"></script>
 <script src="js/countDownTimer.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/jquery.min.js"></script>
