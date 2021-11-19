@@ -1,3 +1,8 @@
+let name = document.getElementById("name");
+let backGround = document.getElementById("background");
+let panel = document.getElementById("panel");
+
+// lähtölaskenta laskuri
 
 const queryString = window.location.search;
 console.log(queryString);
@@ -20,22 +25,17 @@ console.log(hour);
 const minute = queryString.slice(31);
 console.log(minute)
 
-
 //Aika mihin lasketaan
 let countdownDate = new Date(year, month, day, hour, minute).getTime();
-
-//console.log(countdownDate);
 
 //Päivitetään joka sekunti
 let update = setInterval(function () {
 
     //Tämä päivä ja aika
     let now = new Date().getTime();
-    //console.log(now);
 
     //Tämänhetkinen aika miinus aika mihin lasketaan 
     let distance = countdownDate - now;
-    //console.log(distance);
 
     //Aika laskelmat
     let days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -53,3 +53,122 @@ let update = setInterval(function () {
         document.getElementById("timer").innerHTML = "EXPIRED";
     }
 }, 1000);
+
+//color picker
+
+const pickr1 = Pickr.create({
+    el: '.color-picker-1',
+    theme: 'nano', // or 'monolith', or 'nano'
+    default: '#303030',
+
+    components: {
+
+        // Main components
+        preview: true,
+        opacity: true,
+        hue: true,
+
+        // Input / output Options
+        interaction: {
+            hex: true,
+            rgba: true,
+            input: true,
+            clear: true,
+            save: true
+        }
+    }
+});
+
+pickr1.on('change', (...args) => {
+    let colors = args[0].toRGBA();
+    backGround.style.backgroundColor = `rgba(${colors[0]},${colors[1]},${colors[2]},${colors[3]})`;
+});
+
+//pickr 2
+const pickr2 = Pickr.create({
+    el: '.color-picker-2',
+    theme: 'nano', // or 'monolith', or 'nano'
+    default: '#ffffff',
+
+    components: {
+
+        // Main components
+        preview: true,
+        opacity: true,
+        hue: true,
+
+        // Input / output Options
+        interaction: {
+            hex: true,
+            rgba: true,
+            input: true,
+            clear: true,
+            save: true
+        }
+    }
+});
+
+pickr2.on('change', (...args) => {
+    let colors = args[0].toRGBA();
+    name.style.color = `rgba(${colors[0]},${colors[1]},${colors[2]},${colors[3]})`;
+});
+
+//pickr3
+
+const pickr3 = Pickr.create({
+    el: '.color-picker-3',
+    theme: 'nano', // or 'monolith', or 'nano'
+    default: '#444444',
+
+    components: {
+
+        // Main components
+        preview: true,
+        opacity: true,
+        hue: true,
+
+        // Input / output Options
+        interaction: {
+            hex: true,
+            rgba: true,
+            input: true,
+            clear: true,
+            save: true
+        }
+    }
+});
+
+pickr3.on('change', (...args) => {
+    let colors = args[0].toRGBA();
+    panel.style.backgroundColor = `rgba(${colors[0]},${colors[1]},${colors[2]},${colors[3]})`;
+});
+
+//pickr4
+
+const pickr4 = Pickr.create({
+    el: '.color-picker-4',
+    theme: 'nano', // or 'monolith', or 'nano'
+    default: '#ffffff',
+
+    components: {
+
+        // Main components
+        preview: true,
+        opacity: true,
+        hue: true,
+
+        // Input / output Options
+        interaction: {
+            hex: true,
+            rgba: true,
+            input: true,
+            clear: true,
+            save: true
+        }
+    }
+});
+
+pickr4.on('change', (...args) => {
+    let colors = args[0].toRGBA();
+    document.getElementById("timer").style.color = `rgba(${colors[0]},${colors[1]},${colors[2]},${colors[3]})`;
+});
