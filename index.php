@@ -26,7 +26,7 @@
                         <h4><label for="date-and-time">Select date and time</label></h4>
                         <input type="datetime-local" class="form-control" id="date-and-time" name="date-and-time" >
                         <br>
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="submit" id="submitbtn" class="btn btn-primary">Save</button>
                     </fieldset>
                     </form>
                 </div>
@@ -42,16 +42,16 @@
 
             <div class="card bg-light col-md-3 " >
                 <div class="card-body">
-                    <h4>Background:</h4>
+                    <h4>Background color:</h4>
                     <div class="color-picker-1"></div>
                     <br>
-                    <h4>Name:</h4>
+                    <h4>Name color:</h4>
                     <div class="color-picker-2"></div>
                     <br>
-                    <h4>Panel:</h4>
+                    <h4>Panel color:</h4>
                     <div class="color-picker-3"></div>
                     <br>
-                    <h4>Digits:</h4>
+                    <h4>Digits color:</h4>
                     <div class="color-picker-4"></div>
                 </div>
                 

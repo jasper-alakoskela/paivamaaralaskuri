@@ -1,14 +1,16 @@
+
 let name = document.getElementById("name");
 let backGround = document.getElementById("background");
 let panel = document.getElementById("panel");
+let timer = document.getElementById("timer");
 
 // lähtölaskenta laskuri
 
 const queryString = window.location.search;
 console.log(queryString);
 
-const year = queryString.slice(15, 19);
-console.log(year);
+let year = queryString.slice(15, 19);
+console.log(typeof year);
 
 //Pitää muuttaa kuukautta koska js laskee kuukaudet 0-11
 let month = queryString.slice(20, 22);
@@ -23,9 +25,10 @@ const hour = queryString.slice(26, 28);
 console.log(hour);
 
 const minute = queryString.slice(31);
-console.log(minute)
+console.log(minute);
 
 //Aika mihin lasketaan
+
 let countdownDate = new Date(year, month, day, hour, minute).getTime();
 
 //Päivitetään joka sekunti
@@ -44,7 +47,7 @@ let update = setInterval(function () {
     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
     //Näytetään tulos
-    document.getElementById("timer").innerHTML = days + "d " + hours + "h "
+    timer.innerHTML = days + "d " + hours + "h "
         + minutes + "m " + seconds + "s ";
 
     //Jos lähtölaskenta on jo mennyt ilmoitetaan
@@ -53,6 +56,9 @@ let update = setInterval(function () {
         document.getElementById("timer").innerHTML = "EXPIRED";
     }
 }, 1000);
+
+
+
 
 //color picker
 
@@ -170,5 +176,5 @@ const pickr4 = Pickr.create({
 
 pickr4.on('change', (...args) => {
     let colors = args[0].toRGBA();
-    document.getElementById("timer").style.color = `rgba(${colors[0]},${colors[1]},${colors[2]},${colors[3]})`;
+    timer.style.color = `rgba(${colors[0]},${colors[1]},${colors[2]},${colors[3]})`;
 });
