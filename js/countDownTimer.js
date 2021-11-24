@@ -4,13 +4,26 @@ let backGround = document.getElementById("background");
 let panel = document.getElementById("panel");
 let timer = document.getElementById("timer");
 
+
+document.getElementById("save-btn").addEventListener("submit", saveCountdown);
+
+function saveCountdown(e) {
+    e.preventDefault();
+
+    const countdownName = queryString.slice(49);
+    let dateNTime = queryString.slice(15, 33);
+    console.log(dateNTime);
+    dateNTime = dateNTime.replace("%3A", ":");
+    console.log(dateNTime);
+}
+
 // lähtölaskenta laskuri
 
 const queryString = window.location.search;
 console.log(queryString);
 
 let year = queryString.slice(15, 19);
-console.log(typeof year);
+console.log(year);
 
 //Pitää muuttaa kuukautta koska js laskee kuukaudet 0-11
 let month = queryString.slice(20, 22);
@@ -24,9 +37,13 @@ console.log(day);
 const hour = queryString.slice(26, 28);
 console.log(hour);
 
-const minute = queryString.slice(31);
+const minute = queryString.slice(31, 33);
 console.log(minute);
 
+let countdownName = queryString.slice(49);
+console.log(countdownName);
+
+name.innerHTML = countdownName;
 //Aika mihin lasketaan
 
 let countdownDate = new Date(year, month, day, hour, minute).getTime();
@@ -56,9 +73,6 @@ let update = setInterval(function () {
         document.getElementById("timer").innerHTML = "EXPIRED";
     }
 }, 1000);
-
-
-
 
 //color picker
 

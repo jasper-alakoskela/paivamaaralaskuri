@@ -24,9 +24,12 @@
                     <form name="count-down" method="GET">
                     </fieldset>
                         <h4><label for="date-and-time">Select date and time</label></h4>
-                        <input type="datetime-local" class="form-control" id="date-and-time" name="date-and-time" >
+                        <input type="datetime-local" class="form-control" id="date-and-time" name="date-and-time">
                         <br>
-                        <button type="submit" id="submitbtn" class="btn btn-primary">Save</button>
+                        <h4><label for="countdown-name">Countdown name</label></h4>
+                        <input type="text" class="form-control" id="countdown-name" name="countdown-name" >
+                        <br>
+                        <input type="submit" id="load-btn" class="btn btn-primary" value="Load"></input>
                     </fieldset>
                     </form>
                 </div>
@@ -34,9 +37,11 @@
             </div>
 
             <div id="background" class="card col-md-6" >
-                <div id="panel" class="card-header text-center"><h3 id="name">Countdown</h3></div>
+                <div id="panel" class="card-header text-center"><h3 id="name"></h3></div>
                 <div class="card-body text-center">
                     <h1 id="timer"></h1>
+                    <br>
+                    <input id="save-btn" class="btn btn-lg btn-success" type="submit" value="Save countdown"></input>
                 </div>
             </div>
 
