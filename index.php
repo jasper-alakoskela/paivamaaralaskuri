@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css"/>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <title>Päivämäärälaskuri</title>
+    <title>Countdown timer</title>
 </head>
 <body>
     <div class="container-fluid container-expand-lg container-dark bg-primary text-center">
@@ -37,12 +37,18 @@
             </div>
 
             <div id="background" class="card col-md-6" >
-                <div id="panel" class="card-header text-center"><h3 id="name"></h3></div>
-                <div class="card-body text-center">
-                    <h1 id="timer"></h1>
-                    <br>
-                    <input id="save-btn" class="btn btn-lg btn-success" type="submit" value="Save countdown"></input>
-                </div>
+                <form>
+                    <div id="panel" class="card-header text-center"><h3 id="name"></h3></div>
+                    <div class="card-body text-center">
+                        <h1 id="timer"></h1>
+                        <br>
+                        <input id="save-btn" class="btn btn-lg btn-success" type="submit" value="Save countdown"></input>
+                    </div>
+                    <div id="msg" class="alert alert-dismissible alert-danger d-none">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        <p class="mb-0"></p>
+                    </div>
+                </form>              
             </div>
 
             <div class="card bg-light col-md-3 " >
@@ -68,6 +74,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
 <script src="js/countDownTimer.js"></script>
+<script src="js/functions.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/jquery.min.js"></script>
 </body>

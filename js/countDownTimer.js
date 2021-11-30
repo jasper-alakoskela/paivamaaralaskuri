@@ -4,17 +4,53 @@ let backGround = document.getElementById("background");
 let panel = document.getElementById("panel");
 let timer = document.getElementById("timer");
 
+document.getElementById("save-btn").addEventListener("click", saveCountdown);
 
-document.getElementById("save-btn").addEventListener("submit", saveCountdown);
+function saveCountdown(event) {
+    event.preventDefault();
 
-function saveCountdown(e) {
-    e.preventDefault();
 
-    const countdownName = queryString.slice(49);
-    let dateNTime = queryString.slice(15, 33);
-    console.log(dateNTime);
-    dateNTime = dateNTime.replace("%3A", ":");
-    console.log(dateNTime);
+    let nameObject = document.getElementById("name");
+    let backGroundObject = document.getElementById("background");
+    let panelObject = document.getElementById("panel");
+    let timerObject = document.getElementById("timer");
+
+    let name = queryString.slice(49);
+    console.log(name);
+    let datetime = queryString.slice(15, 33);
+    datetime = datetime.replace("%3A", ":");
+    console.log(datetime);
+    // värit muuttujiksi
+
+    let namecolor = window.getComputedStyle(nameObject).color;
+    console.log(namecolor)
+
+    let backgroundcolor = window.getComputedStyle(backGroundObject).backgroundColor;
+    console.log(backgroundcolor);
+
+    let panelcolor = window.getComputedStyle(panelObject).backgroundColor;
+    console.log(panelcolor);
+
+    let timercolor = window.getComputedStyle(timerObject).color;
+    console.log(timercolor);
+
+    let postData = `name=${name}&datetime=${datetime}&backgroundcolor=${backgroundcolor}&namecolor=${namecolor}&panelcolor=${panelcolor}&timercolor=${timercolor}`;
+
+    let ajax = new XMLHttpRequest();
+    ajax.onload = function () {
+        const data = JSON.parse(this.responseText);
+        if (data.hasOwnProperty("success")) {
+            window.location.href = "countdownLibrary.php?type=success&msg=Success";
+            return;
+        }
+        else {
+            showMessage("error", data.error);
+        }
+    }
+    ajax.open("POST", "backend/saveCountdown.php", true);
+    ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    ajax.send(postData);
+
 }
 
 // lähtölaskenta laskuri
