@@ -4,7 +4,7 @@
 $dbserverName = "localhost";
 $dbuserName = "root";
 $dbpassWord = "";
-$dbname = "aanestyssovellus";
+$dbname = "countdowndb";
 
 try {
     $conn = new PDO("mysql:host=$dbserverName; dbname=$dbname;charset=utf8", $dbuserName, $dbpassWord);

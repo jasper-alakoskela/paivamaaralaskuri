@@ -1,10 +1,13 @@
 <?php
 
+header("Content-type: application/json;charset=utf8");
+
 // Tarkistukset ensin
 if (!isset($_POST["name"]) or !isset($_POST["datetime"])) {
     $data = array(
         "error" => "Dataa ei saatavilla!"
     );
+    echo json_encode($data);
     die();
 }
 
@@ -20,38 +23,33 @@ include_once "db-connection.php";
 try {
 
     $stmt = $conn->prepare("INSERT INTO countdown (name, datetime, backgroundcolor, namecolor, panelcolor, timercolor)
-     VALUES (:name, :datetime, :backgroundcolor, :namecolor, :panelcolor, :timerolor);");
+     VALUES (:name, :datetime, :backgroundcolor, :namecolor, :panelcolor, :timercolor);");
     $stmt->bindParam(":name", $name);
     $stmt->bindParam(":datetime", $datetime);
-    $stmt->bindParam(":backgroundColor", $backgroundcolor);
-    $stmt->bindParam(":nameColor", $namecolor);
-    $stmt->bindParam(":panelColor", $panelcolor);
-    $stmt->bindParam(":timerColor", $timercolor);
+    $stmt->bindParam(":backgroundcolor", $backgroundcolor);
+    $stmt->bindParam(":namecolor", $namecolor);
+    $stmt->bindParam(":panelcolor", $panelcolor);
+    $stmt->bindParam(":timercolor", $timercolor);
 
     if($stmt->execute() == false) {
-        echo 'error in saving';
-        /*$data = array(
+        $data = array(
             "error" => "Error in saving!"
-        );*/
+        );
     }
-    else {
-        echo "success";
-        /*
+    else {        
         $data = array(
             "success" => "Success!"
-        );*/
-        } 
-    }
+        );
+    } 
+}
 
 catch(PDOException $e) {
 
-    echo $e->getMessage();
-
-    /*$data = array(
-        "error" => "Sudden error!"
-    );*/
+    $data = array(
+        "error" => $e->getMessage()
+    );
 }
 
 
 //header("Content-type: application/json;charset=utf8");
-//echo json_encode($data);
+echo json_encode($data);

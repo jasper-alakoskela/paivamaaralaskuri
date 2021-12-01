@@ -50,7 +50,6 @@ function saveCountdown(event) {
     ajax.open("POST", "backend/saveCountdown.php", true);
     ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     ajax.send(postData);
-
 }
 
 // lähtölaskenta laskuri
