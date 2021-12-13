@@ -76,7 +76,7 @@ const minute = queryString.slice(31, 33);
 console.log(minute);
 
 let countdownName = queryString.slice(49);
-console.log(countdownName);
+console.log(typeof countdownName);
 
 name.innerHTML = countdownName;
 //Aika mihin lasketaan
